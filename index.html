@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedidos - Catálogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN (fuera del div pantallaInicio) -->
+<div class="barra-superior">
+  <div class="logo">
+    SABOR Y TRADICION
+    <span class="separador-logo"></span>
+  </div>
+  <nav class="menu-navegacion">
+    <a href="#pantallaInicio">Inicio</a>
+    <span class="separador"></span>
+    <a href="#seccionComida" onclick="mostrarContenido(); setTimeout(function(){document.getElementById('seccionComida').scrollIntoView({behavior: 'smooth'});}, 300); return false;">Menú</a>
+    <span class="separador"></span>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</div>
+
+<!-- PANTALLA DE INICIO -->
+<div id="pantallaInicio" class="pantalla-inicio">
+
+  <div class="contenido-inicio">
+    <h1>Bienvenido a <br>RESTAURANTE SABOR Y TRADICION</h1>
+  </div> 
+
+  <div class="cuadro-bienvenida">
+    <p class="frase-bienvenida">
+      Más allá de la excelencia en la comida, en sabor y tradicion nos enorgullece 
+      brindar un servicio cálido y personalizado, donde nuestros clientes se sientan como 
+      en casa. </p>
+    <button onclick="mostrarSelectorCategorias()" class="boton-inicio">HACER PEDIDO</button>
+  </div>
+
+</div>
+
+<!-- Selector de Categorías -->
+<div id="selectorCategorias" style="display:none; text-align:center; margin: 80px auto;">
+  <br>
+  <br>
+  <h2 style="font-size: 40px; color: #ff6347; margin-bottom: 40px;">¿Qué deseas ver?</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccionComida')">PLATOS A BASE DE TRUCHA</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccionplatoscriollos')">PLATOS CRIOLLOS</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccioncaldos')">CALDOS</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('secciNbebidas')">BEBIDAS</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccioninfuciones')">INFUCIONES</button>
+  </div>
+</div>
+
+<div id="contenidoPrincipal" style="display: none;">
+  <div id="menu-navegacion" style="text-align: center; margin: 20px 0;">
+    <!-- Menú de categorías siempre visible arriba -->
+    <button onclick="mostrarSoloCategoria('seccionComida')">PLATOS A BASE <br> DE TRUCHA</button>
+    <button onclick="mostrarSoloCategoria('seccionplatoscriollos')">PLATOS <br> CRIOLLOS</button>
+    <button onclick="mostrarSoloCategoria('seccioncaldos')">CALDOS </button>
+    <button onclick="mostrarSoloCategoria('secciNbebidas')">BEBIDAS </button>
+    <button onclick="mostrarSoloCategoria('seccioninfuciones')">INFUCIONES</button>
+  </div>
+  <div class="galeria">
+    <!-- SECCIÓN DE COMIDAS -->
+    <h2 class="categoria-titulo" id="seccionComida">PLATOS A BASE DE TRUCHA</h2>
+    <div class="categoria">
+      <div class="producto">
+        <img src= "img/trucha.jpg" alt="TRUCHA FRITA">
+        <h2>TRUCHA FRITA</h2> <br>
+        <p>S/ 20</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+      
+        <div class="producto">
+        <img src="img/ct.jpg" alt="CHICHARRON DE TRUCHA">
+        <h2>CHICHARRON DE TRUCHA</h2>
+        <p>S/ 25</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+        <div class="producto">
+        <img src="img/tp.jpg" alt="TRUCHA A LA PARRILLA">
+        <h2>TRUCHA A LA <br>PARRILLA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+          <div class="producto">
+        <img src="img/ta.jpg" alt="TRUCHA AL AJO">
+        <h2>TRUCHA AL <br> AJO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+      
+        <div class="producto">
+        <img src="img/ar.jpg" alt="ARROZ CHAUFA  DE TRUCHA">
+        <h2>ARROZ CHAUFA DE TRUCHA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+     <div class="producto">
+        <img src="img/ST.JPG" alt="SUDADO DE TRUCHA">
+        <h2>SUDADO DE <br> TRUCHA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/jt.jpg" alt="JALEA DE TRUCHA">
+        <h2>JALEA DE <br> TRUCHA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/ce.jpg" alt="CEVICHE DE TRUCHA">
+        <h2> CEVICHE DE <br> TRUCHA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN DE PLATOS CRIOLLOS -->
+    <h2 class="categoria-titulo" id="seccionplatoscriollos">PLATOS CRIOLLOS</h2>
+    <div class="categoria">
+
+      <div class="producto">
+        <img src="img/ls.jpg" alt="LOMO SALTADO">
+        <h2>LOMO SALTADO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+    
+      <div class="producto">
+        <img src="img/ts.jpg" alt="TALLARIN SALTADO">
+        <h2>TALLARIN SALTADO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/lp.jpg" alt="LOMO A LO POBRE">
+        <h2>LOMO A LO POBRE</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/sp.jpg" alt="SALTADO DE POLLO">
+        <h2>SALTADO DE POLLO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+       <div class="producto">
+        <img src="img/bp.jpg" alt="BISTEK A LO POBRE">
+        <h2>BISTEK A LO POBRE</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/pp.jpeg" alt="POLLO A LA PLANCHA">
+        <h2>POLLO A LA PLANCHA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/mla.jpg" alt="MILANESA">
+        <h2>MILANESA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+
+        <div class="producto">
+        <img src="img/chp.jpg" alt="CHICHARRON DE POLLO">
+        <h2>CHICHARRON DE POLLO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+    
+
+      <div class="producto">
+        <img src="img/cf.jpg" alt="CHULETA">
+        <h2>CHULETA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+        <div class="producto">
+        <img src="img/co.jpg" alt="CHURRASCO">
+        <h2>CHURRASCO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/cha.jpg" alt="CHICHARRON DE CHANCHO">
+        <h2>CHICHARRON DE CHANCHO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+
+        <div class="producto">
+        <img src="img/ap.jpg" alt="ARROZ CHAUFA DE POLLO">
+        <h2>ARROZ CHAUFA DE POLLO</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+
+    </div>
+
+    <h2 class="categoria-titulo" id="seccioncaldos">CALDOS</h2>
+    <div class="categoria">
+        <div class="producto">
+        <img src="img/caldo-de-gallina.jpg" alt="CALDO DE GALLINA">
+        <h2>CALDO DE GALLINA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+    </div>
+    
+<div class="producto">
+        <img src="img/patasca_1.jpg" alt="CALDO DE PATASCA">
+        <h2>CALDO DE PATASCA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="img/caldo_verde_de_cajamarca.jpg" alt="CALDO VERDE">
+        <h2>CALDO VERDE </h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+      </div>
+
+
+     </div>
+
+    <h2 class="categoria-titulo" id="secciNbebidas">BEBIDAS</h2>
+    <div class="categoria">
+
+       <div class="producto">
+        <img src="img/limonada.jpg" alt="LIMONADA">
+        <h2>LIMONADA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+    </div>
+
+        <div class="producto">
+        <img src="img/INCA-KOLA-.jpg" alt="INCA KOLA">
+        <h2>INCA KOLA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+    </div>
+
+       <div class="producto">
+        <img src="img/Cola-Cola.JPG" alt="COCA COLA">
+        <h2>COCA COLA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+        <img src="img/GUARANA.JPG" alt="GUARANA">
+        <h2>GUARANA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+    </div>
+
+
+  </div>
+   
+   <h2 class="categoria-titulo" id="seccioninfuciones">INFUCIONES</h2>
+    <div class="categoria">
+     <div class="producto">
+        <img src="img/mate de muña.jpg" alt="MATE DE MUÑA">
+        <h2>MATE DE MUÑA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+     </div>
+
+     <div class="producto">
+        <img src="img/MATE-DE.COCA.JPG" alt="MATE DE COCA">
+        <h2>MATE DE COCA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+     </div>
+
+     <div class="producto">
+        <img src="img/MAZANILLA.JPG" alt="MAZANILLA">
+        <h2>MAZANILLA</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+     </div>
+
+     <div class="producto">
+        <img src="img/CAFE.JPG" alt="CAFE">
+        <h2>CAFE</h2>
+        <p>S/ 9</p>
+        <button class="button">Agregar al carrito</button>
+     </div>
+
+
+  </div>
+
+    </div>
+       <div class="carrito">
+         <h2> PEDIDOS A REALIZAR</h2>
+         <ul id="carrito"></ul>
+         <button class="button" onclick="mostrarFormulario()">Enviar Pedido</button>
+       </div>
+
+    </div>
+  </div>
+
+  <div id="seccionFormulario" style="display: none;">
+    <h2>Completa tu pedido</h2>
+    <h3>🧾 Pedido:</h3>
+    <ul id="carritoResumen"></ul>
+    <p><strong>Total:</strong> <span id="totalPedido">S/ 0</span></p>
+    <button onclick="volverAlCatalogo()" style="margin-bottom: 15px;">⬅️ Seguir comprando</button>
+
+    <form id="pedidoForm">
+      <label>Nombre:</label>
+      <input type="text" id="nombre" required>
+
+      <label>Teléfono:</label>
+      <input type="tel" id="telefono" required>
+
+      <label>Dirección:</label>
+      <input type="text" id="direccion" required>
+
+      <label>Método de pago:</label>
+      <select id="pago" required>
+        <option value="">SELECCIONAR</option>
+        <option value="Efectivo">Efectivo</option>
+        
+        <option value="Tarjeta">Tarjeta</option>
+        <option value="Yape/Plin">Yape/Plin</option>
+      </select>
+
+      <button type="button" onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+  let carrito = [];
+
+  function mostrarCarrito() {
+    const lista = document.getElementById("carrito");
+    if (lista) {
+      lista.innerHTML = "";
+      carrito.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - ${item.precio}`;
+        lista.appendChild(li);
+      });
+    }
+  }
+
+  const botones = document.querySelectorAll(".button");
+  botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      const producto = boton.parentElement;
+      const nombre = producto.querySelector("h2").innerText;
+      const precio = producto.querySelector("p").innerText;
+
+      carrito.push({ nombre, precio });
+      mostrarCarrito();
+    });
+  });
+
+
+function mostrarSelectorCategorias() {
+  document.getElementById("pantallaInicio").style.display = "none";
+  document.getElementById("selectorCategorias").style.display = "block";
+  document.getElementById("contenidoPrincipal").style.display = "none";
+  document.getElementById("seccionFormulario").style.display = "none";
+  document.getElementById("contacto").style.display = "none";
+}
+
+function mostrarSoloCategoria(idCategoria) {
+  document.getElementById("selectorCategorias").style.display = "none";
+  document.getElementById("pantallaInicio").style.display = "none";
+  document.getElementById("contenidoPrincipal").style.display = "block";
+  document.getElementById("seccionFormulario").style.display = "none";
+  document.getElementById("menu-navegacion").style.display = "block";
+  // Oculta todas las categorías
+  document.getElementById("contacto").style.display = "none";
+  const categorias = ["seccionComida", "seccionplatoscriollos", "seccioncaldos", "secciNbebidas", "seccioninfuciones"];
+  categorias.forEach(function(cat){
+    const titulo = document.getElementById(cat);
+    if (titulo) {
+      titulo.style.display = (cat === idCategoria) ? "block" : "none";
+      // Oculta o muestra los productos de cada categoría
+      let categoriaDiv = titulo.nextElementSibling;
+      if (categoriaDiv && categoriaDiv.classList.contains("categoria")) {
+        categoriaDiv.style.display = (cat === idCategoria) ? "grid" : "none";
+      }
+    }
+  });
+  // Scroll al inicio de la categoría, ajustando el offset para el menú sticky
+  setTimeout(function(){
+    const destino = document.getElementById(idCategoria);
+    if(destino){
+      const yOffset = -100; // Ajusta el valor según la altura del menú sticky
+      const y = destino.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: "smooth"});
+    }
+  }, 200);
+}
+
+
+  function mostrarFormulario() {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos antes.");
+      return;
+    }
+
+  document.getElementById("contenidoPrincipal").style.display = "none";
+  document.getElementById("seccionFormulario").style.display = "block";
+  document.getElementById("contacto").style.display = "none";
+  
+
+    const resumen = document.getElementById("carritoResumen");
+    resumen.innerHTML = "";
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+      const li = document.createElement("li");
+
+      const nombreSpan = document.createElement("span");
+      nombreSpan.textContent = item.nombre;
+
+      const precioSpan = document.createElement("span");
+      precioSpan.textContent = item.precio;
+
+      const eliminarBtn = document.createElement("span");
+      eliminarBtn.textContent = "❌";
+      eliminarBtn.className = "eliminar-btn";
+      eliminarBtn.onclick = () => {
+        carrito.splice(index, 1);
+        mostrarFormulario();
+        mostrarCarrito();
+      };
+
+      li.appendChild(nombreSpan);
+      li.appendChild(precioSpan);
+      li.appendChild(eliminarBtn);
+
+      resumen.appendChild(li);
+
+      total += parseFloat(item.precio.replace("S/", "").trim());
+    });
+
+    document.getElementById("totalPedido").innerText = `S/ ${total.toFixed(2)}`;
+
+    history.pushState({ pantalla: "formulario" }, "", "");
+  }
+
+  function volverAlCatalogo() {
+    document.getElementById("contenidoPrincipal").style.display = "block";
+    document.getElementById("seccionFormulario").style.display = "none";
+    document.querySelector(".galeria").style.display = "flex";
+  document.getElementById("contacto").style.display = "none";
+    history.pushState({ pantalla: "contenidoPrincipal" }, "", "");
+  }
+
+  function enviarWhatsApp() {
+    let nombre = document.getElementById("nombre").value;
+    let telefono = document.getElementById("telefono").value;
+    let direccion = document.getElementById("direccion").value;
+    let pago = document.getElementById("pago").value;
+
+    if (!nombre || !telefono || !direccion || !pago) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+
+    let mensaje = `Hola, soy ${nombre}. Quiero hacer un pedido.📦\n\n📞 Teléfono: ${telefono}\n🏠 Dirección: ${direccion}\n💳 Pago: ${pago}\n\n🛍 Productos:\n`;
+
+    carrito.forEach((item, index) => {
+      mensaje += `${index + 1}. ${item.nombre} - ${item.precio}\n`;
+    });
+
+    let numeroWhatsApp = "51913460051";
+    let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  }
+
+  // 🧠 Detecta cuando el usuario usa el botón Atrás
+  window.addEventListener("popstate", function (event) {
+    const pantalla = event.state?.pantalla;
+
+    if (pantalla === "contenidoPrincipal") {
+      document.getElementById("pantallaInicio").style.display = "none";
+      document.getElementById("contenidoPrincipal").style.display = "block";
+      document.querySelector(".galeria").style.display = "flex";
+      document.getElementById("seccionFormulario").style.display = "none";
+      document.getElementById("contacto").style.display = "none";
+    } else if (pantalla === "formulario") {
+      document.getElementById("pantallaInicio").style.display = "none";
+      document.getElementById("contenidoPrincipal").style.display = "block";
+      document.querySelector(".galeria").style.display = "none";
+      document.getElementById("seccionFormulario").style.display = "block";
+      document.getElementById("contacto").style.display = "none";
+    } else {
+      document.getElementById("pantallaInicio").style.display = "block";
+      document.getElementById("contenidoPrincipal").style.display = "none";
+      document.getElementById("seccionFormulario").style.display = "none";
+      document.getElementById("contacto").style.display = "block";
+    }
+  });
+
+  // Estado inicial
+  window.onload = function () {
+    history.replaceState({ pantalla: "inicio" }, "", "");
+  };
+
+  function irASeccion(id) {
+  const destino = document.getElementById(id);
+  if (destino) {
+    destino.scrollIntoView({ behavior: "smooth" });
+  }
+}
+</script>
+
+
+  
+  <!-- SECCIÓN DE CONTACTO -->
+  <div id="contacto" style="background: #f8f8f8; padding: 40px 0; text-align: center;">
+    <h2>Contacto</h2>
+    <p><strong>Teléfono:</strong> 913 460 051</p>
+    <p><strong>Dirección:</strong> Jr. Ejemplo 123, Cajamarca</p>
+    <p><strong>Email:</strong> contacto@saborytradicion.com</p>
+    <p><strong>Horario:</strong> Lunes a Domingo, 8:00 am - 10:00 pm</p>
+  </div>
+
+</body>
+</html>
