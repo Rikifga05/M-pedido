@@ -1,4 +1,3 @@
-
 /* Fondo general */
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -57,7 +56,7 @@ body {
   font-size: 30px;
   font-weight: bold;
   color: #ffffff;
-  margin-top: 10px;
+  margin-top: 190px;
   border-bottom: 2px solid #fcfcfc;
   padding-bottom: 5px;
   text-align: left;
@@ -216,7 +215,7 @@ body {
 #selectorCategorias {
   display: none;
   width: 100%;
-  height: 60vh;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -271,13 +270,45 @@ body {
 
 #seccionFormulario {
   max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
+  margin: 100px auto;
+  padding: 20px;
   background-color: #070707;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   font-family: Arial, sans-serif;
   
+}
+/* Adaptabilidad para tablets y celulares */
+@media (max-width: 900px) {
+  #seccionFormulario {
+    max-width: 90vw;
+    margin: 60px auto;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  #seccionFormulario {
+    max-width: 98vw;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  #seccionFormulario h2, #seccionFormulario h3 {
+    font-size: 20px;
+  }
+  #seccionFormulario label {
+    font-size: 15px;
+  }
+  #seccionFormulario input,
+  #seccionFormulario select {
+    font-size: 15px;
+    padding: 8px;
+  }
+  #seccionFormulario button {
+    font-size: 16px;
+    padding: 10px;
+  }
 }
 #seccionFormulario strong {
   color: #f7f3f0;
@@ -415,7 +446,6 @@ body {
 }
 
 /*barra de navegacion */
-
 .barra-superior {
   position: fixed;
   top: 0;
@@ -472,3 +502,89 @@ body {
   vertical-align: middle;
 }
 
+/* Adaptabilidad para tablets y celulares */
+@media (max-width: 900px) {
+  .barra-superior {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  .logo {
+    font-size: 22px;
+  }
+  .menu-navegacion a {
+    margin: 10px 10px;
+    font-size: 16px;
+  }
+  .galeria {
+    margin-right: 0;
+    gap: 16px;
+  }
+  .categoria {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .carrito {
+    width: 220px;
+    top: 70px;
+    right: 10px;
+    font-size: 12px;
+    padding: 0;
+  }
+  .boton-categoria {
+    font-size: 22px;
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .barra-superior {
+    padding: 8px 5px;
+    font-size: 13px;
+    flex-direction: column;
+    height: auto;
+  }
+  .logo {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .menu-navegacion {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .menu-navegacion a {
+    margin: 6px 0;
+    font-size: 13px;
+  }
+  .galeria {
+    gap: 8px;
+    margin-right: 0;
+  }
+  .categoria {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+  }
+  .carrito {
+    width: 98vw;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 11px;
+    border-radius: 0;
+    padding: 2px;
+  }
+  .boton-categoria {
+    font-size: 16px;
+    padding: 10px 10px;
+    margin: 5px 0;
+  }
+  .titulo-Principal {
+    font-size: 22px;
+    margin: 20px auto 10px auto;
+  }
+  .categoria-titulo {
+    font-size: 18px;
+    margin-top: 20px;
+    padding-bottom: 2px;
+  }
+}
