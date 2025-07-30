@@ -16,6 +16,13 @@
     SABOR Y TRADICION
     <span class="separador-logo"></span>
   </div>
+  <div class="categorias-barra">
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccionComida')">PLATOS A BASE DE TRUCHA</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccionplatoscriollos')">PLATOS CRIOLLOS</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccioncaldos')">CALDOS</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('secciNbebidas')">BEBIDAS</button>
+    <button class="boton-categoria" onclick="mostrarSoloCategoria('seccioninfuciones')">INFUCIONES</button>
+  </div>
   <nav class="menu-navegacion">
     <a href="#pantallaInicio">Inicio</a>
     <span class="separador"></span>
@@ -63,13 +70,7 @@
 
 <div id="contenidoPrincipal" style="display: none;">
   <div id="menu-navegacion" style="text-align: center; margin: 20px 0;">
-    <!-- Menú de categorías siempre visible arriba -->
-    <button onclick="mostrarSoloCategoria('seccionComida')">PLATOS A BASE <br> DE TRUCHA</button>
-    <button onclick="mostrarSoloCategoria('seccionplatoscriollos')">PLATOS <br> CRIOLLOS</button>
-    <button onclick="mostrarSoloCategoria('seccioncaldos')">CALDOS </button>
-    <button onclick="mostrarSoloCategoria('secciNbebidas')">BEBIDAS </button>
-    <button onclick="mostrarSoloCategoria('seccioninfuciones')">INFUCIONES</button>
-  </div>
+   
   <div class="galeria">
     <!-- SECCIÓN DE COMIDAS -->
     <h2 class="categoria-titulo" id="seccionComida">PLATOS A BASE DE TRUCHA</h2>
@@ -131,6 +132,7 @@
       </div>
 
     </div>
+
 
     <!-- SECCIÓN DE PLATOS CRIOLLOS -->
     <h2 class="categoria-titulo" id="seccionplatoscriollos">PLATOS CRIOLLOS</h2>
@@ -362,17 +364,47 @@
   </div>
 
   <script>
-  let carrito = [];
 
+let carrito = [];
+
+// Controla la visibilidad del menú de categorías en la barra superior
+function mostrarCategoriasBarra(visible) {
+  const barra = document.querySelector('.categorias-barra');
+  if (barra) barra.style.display = visible ? 'flex' : 'none';
+}
+ 
   function mostrarCarrito() {
     const lista = document.getElementById("carrito");
     if (lista) {
       lista.innerHTML = "";
+      // Encabezado de columnas
+      const header = document.createElement("div");
+      header.id = "carrito-header";
+      header.innerHTML = '<span>Pedido</span><span>Precio</span>';
+      lista.appendChild(header);
+      let total = 0;
       carrito.forEach((item) => {
         const li = document.createElement("li");
-        li.textContent = `${item.nombre} - ${item.precio}`;
+        const nombreSpan = document.createElement("span");
+        nombreSpan.textContent = item.nombre;
+        const precioSpan = document.createElement("span");
+        precioSpan.textContent = item.precio;
+        precioSpan.className = "precio";
+        li.appendChild(nombreSpan);
+        li.appendChild(precioSpan);
         lista.appendChild(li);
+        total += parseFloat(item.precio.replace("S/", "").trim());
       });
+      // Mostrar total debajo de la lista
+      const totalDiv = document.createElement("div");
+      totalDiv.id = "carrito-total";
+      totalDiv.style.textAlign = "right";
+      totalDiv.style.fontWeight = "bold";
+      totalDiv.style.color = "#ffb347";
+      totalDiv.style.marginTop = "10px";
+      totalDiv.style.fontSize = "16px";
+      totalDiv.innerHTML = `Total: S/ ${total.toFixed(2)}`;
+      lista.appendChild(totalDiv);
     }
   }
 
@@ -395,6 +427,7 @@ function mostrarSelectorCategorias() {
   document.getElementById("contenidoPrincipal").style.display = "none";
   document.getElementById("seccionFormulario").style.display = "none";
   document.getElementById("contacto").style.display = "none";
+  mostrarCategoriasBarra(false);
 }
 
 function mostrarSoloCategoria(idCategoria) {
@@ -403,8 +436,8 @@ function mostrarSoloCategoria(idCategoria) {
   document.getElementById("contenidoPrincipal").style.display = "block";
   document.getElementById("seccionFormulario").style.display = "none";
   document.getElementById("menu-navegacion").style.display = "block";
-  // Oculta todas las categorías
   document.getElementById("contacto").style.display = "none";
+  mostrarCategoriasBarra(true);
   const categorias = ["seccionComida", "seccionplatoscriollos", "seccioncaldos", "secciNbebidas", "seccioninfuciones"];
   categorias.forEach(function(cat){
     const titulo = document.getElementById(cat);
@@ -438,6 +471,7 @@ function mostrarSoloCategoria(idCategoria) {
   document.getElementById("contenidoPrincipal").style.display = "none";
   document.getElementById("seccionFormulario").style.display = "block";
   document.getElementById("contacto").style.display = "none";
+  mostrarCategoriasBarra(true);
   // Scroll al inicio del formulario, ajustando el offset para el menú sticky
   setTimeout(function(){
     const destino = document.getElementById("seccionFormulario");
@@ -486,11 +520,12 @@ function mostrarSoloCategoria(idCategoria) {
   }
 
   function volverAlCatalogo() {
-    document.getElementById("contenidoPrincipal").style.display = "block";
-    document.getElementById("seccionFormulario").style.display = "none";
-    document.querySelector(".galeria").style.display = "flex";
+  document.getElementById("contenidoPrincipal").style.display = "block";
+  document.getElementById("seccionFormulario").style.display = "none";
+  document.querySelector(".galeria").style.display = "flex";
   document.getElementById("contacto").style.display = "none";
-    history.pushState({ pantalla: "contenidoPrincipal" }, "", "");
+  mostrarCategoriasBarra(true);
+  history.pushState({ pantalla: "contenidoPrincipal" }, "", "");
   }
 
   function enviarWhatsApp() {
@@ -519,29 +554,33 @@ function mostrarSoloCategoria(idCategoria) {
   window.addEventListener("popstate", function (event) {
     const pantalla = event.state?.pantalla;
 
-    if (pantalla === "contenidoPrincipal") {
-      document.getElementById("pantallaInicio").style.display = "none";
-      document.getElementById("contenidoPrincipal").style.display = "block";
-      document.querySelector(".galeria").style.display = "flex";
-      document.getElementById("seccionFormulario").style.display = "none";
-      document.getElementById("contacto").style.display = "none";
-    } else if (pantalla === "formulario") {
-      document.getElementById("pantallaInicio").style.display = "none";
-      document.getElementById("contenidoPrincipal").style.display = "block";
-      document.querySelector(".galeria").style.display = "none";
-      document.getElementById("seccionFormulario").style.display = "block";
-      document.getElementById("contacto").style.display = "none";
-    } else {
-      document.getElementById("pantallaInicio").style.display = "block";
-      document.getElementById("contenidoPrincipal").style.display = "none";
-      document.getElementById("seccionFormulario").style.display = "none";
-      document.getElementById("contacto").style.display = "block";
-    }
+  if (pantalla === "contenidoPrincipal") {
+    document.getElementById("pantallaInicio").style.display = "none";
+    document.getElementById("contenidoPrincipal").style.display = "block";
+    document.querySelector(".galeria").style.display = "flex";
+    document.getElementById("seccionFormulario").style.display = "none";
+    document.getElementById("contacto").style.display = "none";
+    mostrarCategoriasBarra(true);
+  } else if (pantalla === "formulario") {
+    document.getElementById("pantallaInicio").style.display = "none";
+    document.getElementById("contenidoPrincipal").style.display = "block";
+    document.querySelector(".galeria").style.display = "none";
+    document.getElementById("seccionFormulario").style.display = "block";
+    document.getElementById("contacto").style.display = "none";
+    mostrarCategoriasBarra(true);
+  } else {
+    document.getElementById("pantallaInicio").style.display = "block";
+    document.getElementById("contenidoPrincipal").style.display = "none";
+    document.getElementById("seccionFormulario").style.display = "none";
+    document.getElementById("contacto").style.display = "block";
+    mostrarCategoriasBarra(false);
+  }
   });
 
   // Estado inicial
   window.onload = function () {
     history.replaceState({ pantalla: "inicio" }, "", "");
+    mostrarCategoriasBarra(false);
   };
 
   function irASeccion(id) {
